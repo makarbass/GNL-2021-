@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpatrici <bpatrici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 12:43:30 by bpatrici          #+#    #+#             */
-/*   Updated: 2022/01/21 13:33:24 by bpatrici         ###   ########.fr       */
+/*   Created: 2022/01/21 12:43:44 by bpatrici          #+#    #+#             */
+/*   Updated: 2022/01/21 13:37:43 by bpatrici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+
 # include <stdlib.h>
 # include <unistd.h>
 # ifndef BUFFER_SIZE

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpatrici <bpatrici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 12:37:24 by bpatrici          #+#    #+#             */
-/*   Updated: 2022/01/21 13:34:04 by bpatrici         ###   ########.fr       */
+/*   Created: 2022/01/21 12:43:07 by bpatrici          #+#    #+#             */
+/*   Updated: 2022/01/21 13:37:42 by bpatrici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_linestr(char *str)
 {
@@ -41,7 +41,7 @@ char	*ft_linestr(char *str)
 
 char	*ft_strcut(char *str)
 {
-	char	*line;
+	char	*new;
 	int		i;
 	int		j;
 
@@ -53,16 +53,16 @@ char	*ft_strcut(char *str)
 		i++;
 	if (str[i] == '\n')
 		i++;
-	line = ft_malloc((j - i) + 1);
-	if (!line)
+	new = ft_malloc((j - i) + 1);
+	if (!new)
 		return (NULL);
 	j = 0;
 	while (str[i + j])
 	{
-		line[j] = str[i + j];
+		new[j] = str[i + j];
 		j++;
 	}
-	return (line);
+	return (new);
 }
 
 char	*ft_parseline(char **str)
@@ -107,18 +107,18 @@ void	ft_readstr(int fd, char	**str)
 char	*get_next_line(int fd)
 {
 	char		*read_line;
-	static char	*str;
+	static char	*str[65536];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 65536)
 		return (0);
 	read_line = NULL;
-	ft_readstr(fd, &str);
-	if (str)
-		read_line = ft_parseline(&str);
+	ft_readstr(fd, &(str[fd]));
+	if (str[fd])
+		read_line = ft_parseline(&(str[fd]));
 	if (!read_line || *read_line == '\0')
 	{
 		ft_freestr(&read_line);
-		ft_freestr(&str);
+		ft_freestr(&(str[fd]));
 		return (NULL);
 	}
 	return (read_line);
